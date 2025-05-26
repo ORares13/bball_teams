@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Better input focus states */
+.nextui-input-wrapper:focus-within {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Smoother transitions */
+.nextui-navbar,
+.nextui-button,
+.nextui-input-wrapper {
+  transition: all 0.2s ease;
+}

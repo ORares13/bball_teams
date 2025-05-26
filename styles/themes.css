@@ -1,0 +1,11 @@
+:root {
+    /* Euroleague Theme */
+    --euroleague-primary: #E67E22;
+    --euroleague-secondary: #000000;
+    --euroleague-accent: #FFFFFF;
+
+    /* Eurocup Theme */
+    --eurocup-primary: #3498DB;
+    --eurocup-secondary: #000000;
+    --eurocup-accent: #FFFFFF;
+}
