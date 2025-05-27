@@ -1,14 +1,15 @@
-import { Suspense } from 'react';
+import { JSX, Suspense } from 'react';
 import ClientPlayers from '@/components/players/ClientPlayers';
 
-interface Props {
-    params: {
+type PlayerPageProps = {
+    params: Promise<{
         teamId: string;
-    };
-}
+    }>;
+};
 
-export default function PlayerPage({ params }: Props) {
-    const { teamId } = params;
+export default async function PlayerPage({ params }: PlayerPageProps): Promise<JSX.Element> {
+    const resolvedParams = await params;
+    const { teamId } = resolvedParams;
 
     return (
         <div className="min-h-screen bg-white">

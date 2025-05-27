@@ -5,6 +5,7 @@ import { Team } from '@/domains/teams/types';
 import UpdateModal from './UpdateModal';
 import DeleteModal from './DeleteModal';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function TeamCard({
     team,
@@ -68,10 +69,11 @@ export default function TeamCard({
                     </button>
                     <button
                         onClick={() => router.push(`/euroleague/${team.id}/players`)}
-                        className={`${buttonColors} text-white px-3 py-1 rounded`}
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                     >
                         Players
                     </button>
+
                 </div>
             </div>
 
