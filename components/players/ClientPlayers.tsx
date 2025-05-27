@@ -4,12 +4,12 @@ import { useEffect, useState, useCallback } from 'react';
 import { Player } from '@/domains/teams/types';
 import PlayerCard from './PlayerCard';
 import PlayerAgeChart from './PlayerAgeChart';
-import AddPlayerModal from './AddPlayerModal'; // Import the modal
+import AddPlayerModal from './AddPlayerModal';
 
 export default function ClientPlayers({ teamId }: { teamId: string }) {
     const [players, setPlayers] = useState<Player[]>([]);
     const [error, setError] = useState<string | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const fetchPlayers = useCallback(async () => {
         try {
