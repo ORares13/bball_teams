@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { playerSchema } from '@/domains/teams/schemas';
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+    const params = await props.params;
     const searchParams = req.nextUrl.searchParams;
     const search = searchParams.get('search')?.toLowerCase() ?? '';
     const teamid = params.id;
@@ -20,7 +21,8 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 }
 
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+    const params = await props.params;
     const body = await req.json();
 
 

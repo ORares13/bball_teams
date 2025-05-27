@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { playerSchema } from '@/domains/teams/schemas';
 
-export async function PUT(req: NextRequest, { params }: { params: { playerId: string; id: string } }) {
+export async function PUT(
+    req: NextRequest,
+    props: { params: Promise<{ playerId: string; id: string }> }
+) {
+    const params = await props.params;
     const body = await req.json();
 
     const dataToValidate = { ...body, teamId: params.id };
@@ -35,7 +39,8 @@ export async function PUT(req: NextRequest, { params }: { params: { playerId: st
     }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { playerId: string } }) {
+export async function DELETE(req: NextRequest, props: { params: Promise<{ playerId: string }> }) {
+    const params = await props.params;
     try {
         await prisma.player.delete({
             where: { id: params.playerId },
