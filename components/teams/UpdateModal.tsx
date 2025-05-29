@@ -16,12 +16,16 @@ export default function UpdateModal({
     onClose,
     onUpdate,
 }: UpdateModalProps) {
+
     const router = useRouter();
+    console.log("UpdateModal isOpen:", isOpen);
+
 
     if (!isOpen) return null;
 
     const handleUpdate = async (values: TeamFormValues) => {
         try {
+            console.log("try to do put on team");
             const res = await fetch(`/api/protected/teams/${team.id}`, {
                 method: 'PUT',
                 headers: {

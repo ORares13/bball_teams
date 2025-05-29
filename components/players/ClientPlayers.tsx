@@ -50,9 +50,9 @@ export default function ClientPlayers({ teamId }: { teamId: string }) {
 
             <div className="flex justify-between items-center mb-4">
                 {players.length > 0 && (
-                    <h2 className="text-xl font-semibold">Player Ages Distribution</h2>
+                    <h2 className="text-xl font-semibold text-black">Player Ages Distribution</h2>
                 )}
-                {/* Add Player Button */}
+
                 <button
                     onClick={() => setIsModalOpen(true)}
                     className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
@@ -80,7 +80,7 @@ export default function ClientPlayers({ teamId }: { teamId: string }) {
                 ))}
             </div>
 
-            {/* Add Player Modal */}
+
             <AddPlayerModal
                 teamId={teamId}
                 isOpen={isModalOpen}

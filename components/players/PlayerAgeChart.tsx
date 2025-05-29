@@ -11,7 +11,6 @@ interface PlayerAgeChartProps {
 }
 
 export default function PlayerAgeChart({ players }: PlayerAgeChartProps) {
-    // Prepare data grouped by age with counts of players
     const ageCountMap: Record<number, number> = {};
 
     players.forEach(player => {
@@ -19,13 +18,11 @@ export default function PlayerAgeChart({ players }: PlayerAgeChartProps) {
         ageCountMap[age] = (ageCountMap[age] || 0) + 1;
     });
 
-    // Convert map to array suitable for recharts
     const data = Object.entries(ageCountMap)
         .map(([age, count]) => ({
             age: age,
             count,
         }))
-        // Sort by age ascending
         .sort((a, b) => Number(a.age) - Number(b.age));
 
     return (

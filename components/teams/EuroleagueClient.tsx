@@ -64,7 +64,7 @@ export default function EuroleagueClient() {
             <div className="container mx-auto p-4">
                 {error && <p className="text-red-500">{error}</p>}
 
-                <h2 className="text-xl font-semibold mb-4">Arena Capacities</h2>
+                <h2 className="text-xl font-semibold mb-4 text-black">Arena Capacities</h2>
                 <ArenaCapacityChart teams={teams} />
 
                 <div className="space-y-4 mt-8">

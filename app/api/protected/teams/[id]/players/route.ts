@@ -3,22 +3,29 @@ import { prisma } from '@/lib/prisma';
 import { playerSchema } from '@/domains/teams/schemas';
 
 export async function GET(req: NextRequest, props: { params: Promise<{ id: string }> }) {
-    const params = await props.params;
-    const searchParams = req.nextUrl.searchParams;
-    const search = searchParams.get('search')?.toLowerCase() ?? '';
-    const teamid = params.id;
-    const players = await prisma.player.findMany({
-        where: {
-            teamId: teamid,
-            name: {
-                contains: search,
-                mode: 'insensitive',
+    console.log("IN GET FOR PLAYERS");
+    try {
+        const params = await props.params;
+        const searchParams = req.nextUrl.searchParams;
+        const search = searchParams.get('search')?.toLowerCase() ?? '';
+        const teamid = params.id;
+        const players = await prisma.player.findMany({
+            where: {
+                teamId: teamid,
+                name: {
+                    contains: search,
+                    mode: 'insensitive',
+                },
             },
-        },
-    });
+        });
 
-    return NextResponse.json(players);
+        return NextResponse.json(players);
+    } catch (error) {
+        console.error('GET /players error:', error);
+        return NextResponse.json({ error: 'Failed to fetch players' }, { status: 500 });
+    }
 }
+
 
 
 export async function POST(req: NextRequest, props: { params: Promise<{ id: string }> }) {

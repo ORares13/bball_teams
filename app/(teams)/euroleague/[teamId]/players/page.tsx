@@ -10,6 +10,7 @@ type PlayerPageProps = {
 export default async function PlayerPage({ params }: PlayerPageProps): Promise<JSX.Element> {
     const resolvedParams = await params;
     const { teamId } = resolvedParams;
+    console.log("IN PLAYERPAGE");
 
     return (
         <div className="min-h-screen bg-white">

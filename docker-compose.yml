@@ -1,0 +1,29 @@
+services:
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: developer
+      POSTGRES_DB: easydesk
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: postgresql://developer:developer@db:5432/easydesk
+      NODE_ENV: production
+      JWT_SECRET: Ue8$@14kFz!9nVxZ
+    depends_on:
+      - db
+
+
+
+volumes:
+  postgres_data:
+
+

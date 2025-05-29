@@ -34,7 +34,7 @@ export default function PlayerCard({
         <div className={`rounded-lg shadow-md p-4 mb-4 border bg-white`}>
             <div className="flex items-center justify-between">
                 <div>
-                    <h3 className="font-bold text-lg">{player.name}</h3>
+                    <h3 className="font-bold text-lg text-black">{player.name}</h3>
                     <p className="text-gray-700">Position: {player.position}</p>
                     <p className={`text-sm ${highlightClass}`}>Age: {player.age}</p>
                 </div>

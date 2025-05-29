@@ -36,6 +36,7 @@ export async function PUT(req: NextRequest) {
 
         return NextResponse.json(updated);
     } catch (error) {
+        console.error('PUT /api/protected/teams/[id] error:', error);
         return NextResponse.json({ error: 'Team not found or update failed' }, { status: 404 });
     }
 }
@@ -66,6 +67,7 @@ export async function DELETE(req: NextRequest) {
 
         return NextResponse.json({ message: 'Team deleted' });
     } catch (error) {
+        console.error('DELETE /api/protected/teams/[id] error:', error);
         return NextResponse.json({ error: 'Team not found or delete failed' }, { status: 404 });
     }
 }

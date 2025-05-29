@@ -10,16 +10,19 @@ export async function POST(req: Request) {
 
     const valid = await verifyPassword(password, user.password);
     if (!valid) return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
-
+    console.log("IN LOGIN API");
     const token = await generateToken({ userId: user.id, role: user.role });
+    console.log(token);
+
 
     const response = NextResponse.json({ success: true });
     response.cookies.set('token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 60 * 24, // 1 day
+        maxAge: 60 * 60 * 24,
         path: '/',
     });
-
+    console.log("PAUSE");
+    console.log(response);
     return response;
 }

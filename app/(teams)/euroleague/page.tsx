@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 
 export default function EuroleaguePage() {
     return (
-        <Suspense fallback={<div>Loading Eurocup teams...</div>}>
+        <Suspense fallback={<div>Loading Euroleague teams...</div>}>
             <EuroleagueClient />
         </Suspense>
     );

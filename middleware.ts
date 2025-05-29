@@ -20,9 +20,11 @@ export async function middleware(req: NextRequest) {
         requestHeaders.set('x-user-role', user.role);
 
         return NextResponse.next({ request: { headers: requestHeaders } });
-    } catch {
+    } catch (err) {
+        console.error("Token verification failed:", err);
         return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
+
 }
 
 export const config = {
