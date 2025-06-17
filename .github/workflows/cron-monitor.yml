@@ -1,19 +1,1 @@
-name: Run Monitoring Job every 5 minutes
 
-on:
-  schedule:
-    - cron: "*/5 * * * *"
-  workflow_dispatch:
-
-jobs:
-  trigger-vercel-cron:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Call Vercel Cron API route
-        uses: fjogeleit/http-request-action@v1.5.2
-        with:
-          url: https://bball-teams-kg9z7t68v-orares13s-projects.vercel.app/api/cron
-          method: GET
-          headers: |
-            Authorization: Bearer ${{ secrets.CRON_SECRET }}
